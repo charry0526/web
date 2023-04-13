@@ -13,7 +13,7 @@ module.exports = {
     proxyTable: {
       '/': {
         // target: 'https://www.gssy.club',
-        target: 'http://127.0.0.1:8080/stock2c1/',
+        target: 'http://127.0.0.1:8085',
         secure: false,
         changeOrigin: true,
         pathRewrite: {
@@ -23,8 +23,8 @@ module.exports = {
     },
 
     // Various Dev Server settings
-    host: '127.0.0.1', // can be overwritten by process.env.HOST
-    port: 8001, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
+    host: 'localhost', // can be overwritten by process.env.HOST
+    port: 8080, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
     autoOpenBrowser: false,
     errorOverlay: true,
     notifyOnErrors: true,

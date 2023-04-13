@@ -354,9 +354,9 @@ export function getSettingInfo (options) {
 }
 
 // 获取统计信息
-// export function getCountInfo (options) {
-//   return get('/admin/count.do', options)
-// }
+export function getCountInfo (options) {
+  return get('/admin/count.do', options)
+}
 
 // 获取产品设置信息
 export function getProductSetting (options) {

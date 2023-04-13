@@ -8,12 +8,12 @@
         <div class="lowin-box lowin-login">
           <div class="lowin-box-inner">
             <!-- <el-form class="demo-form-inline" size="small"> -->
-            <p>薇雅网络</p>
-            <p>客服QQ:2958997801</p>
+            <p>xx网络</p>
+			<p>客服QQ:xxxx</p>
             <div class="lowin-group">
               <label>用户名 <a href="#" class="login-back-link">登录?</a></label>
               <input v-model="phone" max="11" maxlength="11" type="name" placeholder="用户名" name="email"
-                class="lowin-input">
+                     class="lowin-input">
             </div>
             <div class="lowin-group password-group">
               <label>密码</label>
@@ -21,9 +21,9 @@
             </div>
             <div class="lowin-group password-group">
               <label>验证码</label>
-              <img @click="refreshImg" class='code-img' :src="adminUrl + '/code/getCode.do?time=' + imgCodeTime" alt="验证码">
+              <img @click="refreshImg" class='code-img' :src="adminUrl+'/code/getCode.do?time=' + imgCodeTime" alt="验证码">
               <input v-model="code2" @keyup.enter="tologin" type="text" placeholder="验证码" name="password"
-                class="lowin-input">
+                     class="lowin-input">
             </div>
             <button @click="tologin" class="lowin-btn login-btn">
               登录
@@ -52,21 +52,21 @@ import APIUrl from '@/axios/api.url' // 引入api.url.js
 export default {
   components: {},
   props: {},
-  data() {
+  data () {
     return {
       adminUrl: null,
       code2: '',
       name: '',
-      phone: '18888888888',
-      password: '123456',
+      phone: '',
+      password: '',
       siteInfo: '',
       imgCodeTime: 0
     }
   },
   watch: {},
   computed: {},
-  created() { },
-  mounted() {
+  created () {},
+  mounted () {
     this.adminUrl = APIUrl.baseURL
     if (this.adminUrl === undefined) {
       this.adminUrl = ''
@@ -74,11 +74,11 @@ export default {
     this.getSiteInfo()
   },
   methods: {
-    toRegister() {
+    toRegister () {
       // 注册
 
     },
-    async tologin() {
+    async tologin () {
       // 登录
       if (isNull(this.phone) || !isPhone(this.phone)) {
         this.$message.error('请输入正确的手机号码')
@@ -94,7 +94,6 @@ export default {
           adminPwd: this.password,
           verifyCode: this.code2
         }
-        console.log(opts)
         let data = await api.login(opts)
         if (data.status === 0) {
           this.$store.state.userInfo.phone = this.phone
@@ -102,35 +101,14 @@ export default {
           this.$store.state.userInfo.id = data.data.id
           window.localStorage.setItem('adminName', data.data.adminName)
           window.localStorage.setItem('id', data.data.id)
-          this.setCookie('USER_TOKEN', data.cookie)
+          // this.setCookie('USER_TOKEN', data.cookie)
           this.$router.push('/home')
         } else {
           this.$message.error(data.msg)
         }
       }
     },
-    delCookie(name) {
-      var exp = new Date();
-      exp.setTime(exp.getTime() - 1);
-      var cval = this.getCookie(name);
-      if (cval != null)
-        document.cookie = name + "=" + cval + ";expires=" + exp.toGMTString();
-    },
-    setCookie(name, value) {
-      var domain = document.domain;
-      var Days = 30;
-      var exp = new Date();
-      exp.setTime(exp.getTime() + Days * 24 * 60 * 60 * 1000);
-      document.cookie = name + "=" + escape(value) + ";expires=Session" + ';path=/;domain=' + '' + domain;
-    },
-    getCookie(name) {
-      var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
-      if (arr = document.cookie.match(reg))
-        return unescape(arr[2]);
-      else
-        return null;
-    },
-    refreshImg() {
+    refreshImg () {
       this.adminUrl = ''
       this.imgCodeTime = Date.now()
       this.dialogImgShow = false
@@ -143,11 +121,11 @@ export default {
         this_.dialogImgShow = true
       }, 500)
     },
-    async checkCode() {
+    async checkCode () {
       let data = await api.checkCode({ code: this.code2 })
       return data
     },
-    async getSiteInfo() {
+    async getSiteInfo () {
       // 获取站点信息
       let data = await api.getInfo()
       if (data.status === 0) {
@@ -161,17 +139,18 @@ export default {
 }
 </script>
 <style scoped>
-.lowin .lowin-group.password-group {
-  position: relative;
-}
+  .lowin .lowin-group.password-group {
+    position: relative;
+  }
 
-.code-img {
-  float: right;
-  width: 100px;
-  height: 45px;
-  line-height: 45px;
-  position: absolute;
-  right: 0;
-  background: #fff;
-}
+  .code-img {
+    float: right;
+    width: 100px;
+    height: 45px;
+    line-height: 45px;
+    position: absolute;
+    right: 0;
+    background: #fff;
+  }
+
 </style>

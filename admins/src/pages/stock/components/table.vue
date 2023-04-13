@@ -5,14 +5,19 @@
         <el-row>
           <el-radio-group v-model="form.stockPlate" @change="onSubmit">
             <!-- <el-radio-button label="全部"></el-radio-button> -->
-            <el-radio-button label="A股"></el-radio-button>
+            <el-radio-button label="">A股</el-radio-button>
+            <el-radio-button label="港股"></el-radio-button>
+            <el-radio-button label="美股"></el-radio-button>
             <el-radio-button label="科创"></el-radio-button>
           </el-radio-group>
         </el-row>
         <el-form-item label="沪深股" prop="stockType">
           <el-select v-model="form.stockType" placeholder="沪深股">
+            <el-option label="无" value=""></el-option>
             <el-option label="沪股" value="sh"></el-option>
             <el-option label="深股" value="sz"></el-option>
+            <el-option label="港股" value="hk"></el-option>
+            <el-option label="美股" value="us"></el-option>
           </el-select>
         </el-form-item>
         <!-- <el-form-item  label="股票类型">
@@ -84,7 +89,7 @@
             label="股票名字">
             <template slot-scope="scope">
               <p>
-                <span class="show red">{{scope.row.stockType == 'sz'?'深':'沪'}}</span>
+                <span class="show red">{{getStockType(scope.row.stockType)}}</span>
                 <span v-if="scope.row.stockPlate == '科创'" class="show">科创</span>
               </p>
               <p class="big-font">
@@ -267,6 +272,17 @@ export default {
     this.getAgentList()
   },
   methods: {
+    getStockType (val) {
+      let rs = '沪'
+      if (val === 'sz') {
+        rs = '深'
+      } else if (val === 'hk') {
+        rs = '港'
+      } else if (val === 'us') {
+        rs = '美'
+      }
+      return rs
+    },
     handleChange (value) {
       if (value.length === 1) {
         this.form.stockPlate = value[value.length - 1]
@@ -308,7 +324,7 @@ export default {
         name: this.form.name,
         showState: this.form.showState,
         lockState: this.form.lockState,
-        stockPlate: this.form.stockPlate === '科创' ? '科创' : '',
+        stockPlate: this.form.stockPlate,
         stockType: this.form.stockType,
         pageSize: this.form.pageSize,
         pageNum: this.form.pageNum
