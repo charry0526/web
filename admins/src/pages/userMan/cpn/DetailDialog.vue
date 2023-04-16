@@ -62,8 +62,8 @@
 
               <el-col :span="8">
                 浮动盈亏：
-                <span class="active">
-                  {{info.price-Number(info.num)*info.scprice}}
+                <span :class="Number(info.price)-Number(info.scprice)>0?'active':'redactive'">
+                  {{(Number(info.price)-Number(info.scprice))*info.num}}
                 </span>
               </el-col>
             </el-row>
@@ -148,5 +148,8 @@ export default {
   font-size: 16px;
   font-weight: 700;
   color: green;
+}
+.redactive{
+  color: red;
 }
 </style>
