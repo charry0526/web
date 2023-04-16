@@ -18,26 +18,27 @@
                   {{info.names}}
                 </span>
               </el-col>
-              <el-col :span="8">
+              <!-- <el-col :span="8">
                 股票代码：
                 <span>
                   {{info.code}}
                 </span>
-              </el-col>
+              </el-col> -->
               <el-col :span="8">
                 买入价格：
                 <span>
                   {{info.price}}
                 </span>
               </el-col>
-            </el-row>
-            <el-row>
               <el-col :span="8">
                 现价：
                 <span>
                   {{info.scprice}}
                 </span>
               </el-col>
+            </el-row>
+            <el-row>
+
               <el-col :span="8">
                 杠杆倍数：
                 <span>
@@ -50,14 +51,15 @@
                   {{Number(info.num)*info.price}}
                 </span>
               </el-col>
-            </el-row>
-            <el-row>
-              <el-col :span="8">
+                <el-col :span="8">
                 状态：
                 <span>
                   {{info.zt?'启动':'隐藏'}}
                 </span>
               </el-col>
+            </el-row>
+            <el-row>
+
               <el-col :span="8">
                 浮动盈亏：
                 <span class="active">

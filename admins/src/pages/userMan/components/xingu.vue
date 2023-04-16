@@ -24,7 +24,7 @@
 
         <el-row :gutter="10">
           <el-col :span="8">股票名字:{{info.nickname}}</el-col>
-          <el-col :span="8">代码:{{info.code}}</el-col>
+          <!-- <el-col :span="8">代码:{{info.code}}</el-col> -->
           <el-col :span="8">现价:{{info.scprice}}</el-col>
         </el-row>
         <div class="line"></div>
@@ -116,7 +116,7 @@ export default {
     return {
       info: {
         nickname: '',
-        code: '',
+        // code: '',
         scprice: '',
         names: '',
         lever: '1/3/5/10',
@@ -193,8 +193,8 @@ export default {
         const data = res.data
         const {code, name, nowPrice} = data
         if (res.status == 0) {
-          this.info.nickname = code
-          this.info.code = name
+          this.info.nickname = name
+          // this.info.code = name
           this.info.scprice = nowPrice
         }
       }).finally(() => {
