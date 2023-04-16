@@ -481,14 +481,14 @@ export function updatePwd (options) {
   return post('/admin/updatePwd.do', options)
 }
 
-//======================【最新添加，2020年7月17日18:12:38】===========================================================
+// ======================【最新添加，2020年7月17日18:12:38】===========================================================
 
 // 短信发送日志
 export function messageList (options) {
   return get('/admin/log/messageList.do', options)
 }
 
-//============================分仓配资-相关，2020年7月23日19:14:55=========================================
+// ============================分仓配资-相关，2020年7月23日19:14:55=========================================
 // 分仓配资设置信息查询
 export function getFundsSetting (options) {
   return post('/admin/funds/getFundsSetting.do', options)
@@ -587,4 +587,9 @@ export function delAgent (options) {
 // 删除公告
 export function delArt (options) {
   return post('/admin/art/delArt.do', options)
+}
+
+// 删除公告
+export function addESOP (options) {
+  return post('/api/admin/addESOP.do', options)
 }

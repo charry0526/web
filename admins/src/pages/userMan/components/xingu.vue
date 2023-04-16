@@ -10,8 +10,8 @@
         <el-row :gutter="10">
           <el-col :span="24">
             <el-form-item label="选择股票"
-                          prop="name">
-              <el-input v-model="info.name">
+                          prop="names">
+              <el-input placeholder="输入股票代码查询股票信息" v-model="info.names">
                 <el-button @click="search"
                            slot="append"
                            :loading="fullscreenLoading"
@@ -25,7 +25,7 @@
         <el-row :gutter="10">
           <el-col :span="8">股票名字:{{info.nickname}}</el-col>
           <el-col :span="8">代码:{{info.code}}</el-col>
-          <el-col :span="8">现价:{{info.currentPrice}}</el-col>
+          <el-col :span="8">现价:{{info.scprice}}</el-col>
         </el-row>
         <div class="line"></div>
         <el-row :gutter="10">
@@ -33,7 +33,7 @@
             <el-form-item label="上架时间"
                           prop="data">
               <el-date-picker style="width:300px"
-                              v-model="info.data"
+                              v-model="info.fxtime"
                               type="date"
                               format="yyyy-MM-dd"
                               value-format="yyyy-MM-dd"
@@ -53,16 +53,16 @@
         <el-row :gutter="10">
           <el-col :span="12">
             <el-form-item label="杠杆倍数"
-                          prop="multiple">
+                          prop="lever">
               <el-input style="width:300px"
                         placeholder="输入买入杠杆倍数"
-                        v-model="info.multiple"></el-input>
+                        v-model="info.lever"></el-input>
             </el-form-item>
           </el-col>
           <el-col :span="12">
             <el-form-item label="状态"
-                          prop="status">
-              <el-radio-group v-model="info.status">
+                          prop="zt">
+              <el-radio-group v-model="info.zt">
                 <el-radio :label="1">启动</el-radio>
                 <el-radio :label="0">隐藏</el-radio>
               </el-radio-group>
@@ -81,34 +81,35 @@
                            placeholder="请选择">
                   <el-option v-for="item in numData"
                              :key="item.id"
-                             :label="item.label+'手'"
+                             :label="item.label+'股'"
                              :value="item.label"></el-option>
 
                 </el-select>
-                <el-button slot="append">手</el-button>
+                <el-button slot="append">股</el-button>
               </el-input>
             </el-form-item>
           </el-col>
         </el-row>
         <el-row class="text-center submit-btn">
           <el-button @click="submitForm('ruleForm')"
-                     type="primary">主要按钮</el-button>
+                     type="primary">创建持仓单</el-button>
         </el-row>
       </el-card>
 
     </el-form>
 
-    <!-- <DetailDialog  ref="detailDialog"></DetailDialog> -->
+    <DetailDialog @createOrder="createOrder" :info="info"  ref="detailDialog">
+    </DetailDialog>
   </div>
 
 </template>
 
 <script>
 import * as api from '@/axios/api'
-// import DetailDialog from './detail-dialog'
+import DetailDialog from '../cpn/DetailDialog.vue'
 export default {
   components: {
-    // DetailDialog,
+    DetailDialog
   },
   props: {},
   data () {
@@ -116,40 +117,36 @@ export default {
       info: {
         nickname: '',
         code: '',
-        currentPrice: '',
-        name: '',
-        status: 1
+        scprice: '',
+        names: '',
+        lever: '1/3/5/10',
+        zt: 1
       },
       rules: {
-        name: [
-          { required: true, message: '输入股票代码查询股票信息', trigger: 'blur' }
+        names: [
+          { required: true, message: '请选择股票', trigger: 'blur' }
         ],
-        data: [
+        fxtime: [
           { required: true, message: '请选择上架时间', trigger: 'change' }
         ],
         price: [
           { required: true, message: '输入所选择时间点对应的价格', trigger: 'blur' },
           {
-            pattern: /^-?\d{1,3}(,\d{3})*(\.\d{1,2})?$/,
+            pattern: /^-?\d{1,9}(,\d{9})*(\.\d{1,2})?$/,
             message: '请输入正确格式',
             trigger: 'blur'
           }
         ],
-        multiple: [
-          { required: true, message: '输入买入杠杆倍数', trigger: 'change' },
-          {
-            pattern: /^-?\d{1,3}(,\d{3})*(\.\d{1,2})?$/,
-            message: '请输入正确格式',
-            trigger: 'blur'
-          }
+        lever: [
+          { required: true, message: '输入买入杠杆倍数', trigger: 'change' }
         ],
-        status: [
+        zt: [
           { required: true, message: '请选择状态', trigger: 'change' }
         ],
         num: [
           { required: true, message: '请选择数量', trigger: 'change' },
           {
-            pattern: /^-?\d{1,3}(,\d{3})*(\.\d{1,2})?$/,
+            pattern: /^-?\d{1,9}(,\d{9})*(\.\d{1,2})?$/,
             message: '请输入正确格式',
             trigger: 'blur'
           }
@@ -166,10 +163,24 @@ export default {
   },
   methods: {
     /**
+     * 确认 创建
+     */
+    createOrder () {
+      console.log(11)
+      api.addESOP(this.info).then(res => {
+        if (res.status == 0) {
+          this.$message({
+            message: '创建成功',
+            type: 'success'
+          })
+        }
+      })
+    },
+    /**
      * 搜索股票
      */
     search () {
-      if (!this.info.name) {
+      if (!this.info.names) {
         this.$message({
           message: '请先填写股票',
           type: 'warning'
@@ -177,12 +188,18 @@ export default {
         return false
       }
       this.fullscreenLoading = true
-      setTimeout(() => {
-        this.info.nickname = '必赚'
-        this.info.code = '123'
-        this.info.currentPrice = '16.36'
+      api.getSingleStock({code: this.info.names}).then(res => {
+        console.log(res)
+        const data = res.data
+        const {code, name, nowPrice} = data
+        if (res.status == 0) {
+          this.info.nickname = code
+          this.info.code = name
+          this.info.scprice = nowPrice
+        }
+      }).finally(() => {
         this.fullscreenLoading = false
-      }, 2000)
+      })
     },
     /**
      * describe 获取最低数量
@@ -193,6 +210,7 @@ export default {
     submitForm (formName) {
       this.$refs[formName].validate((valid) => {
         if (valid) {
+          this.$refs.detailDialog.dialogVisible = true
           console.log(this.info)
           // xxx().then(res=>{
           // console.log();

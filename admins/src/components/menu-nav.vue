@@ -26,7 +26,6 @@
           </template>
         </el-submenu> -->
 
-
         <el-menu-item index="0">
           <div class="menu-wra" @click="$router.push('/home')">
             <i class="iconfont icon-yemian"></i>
@@ -49,10 +48,11 @@
             <router-link to="/userMan/freePrice">
               <el-menu-item index="2-3">自由价创建</el-menu-item>
             </router-link>
+             <router-link to="/userMan/xingu">
+              <el-menu-item index="2-4">新股申购</el-menu-item>
+            </router-link>
           </el-menu-item-group>
         </el-submenu>
-
-
 
         <el-submenu index="3">
           <template slot="title">

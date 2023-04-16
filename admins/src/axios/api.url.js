@@ -1,6 +1,7 @@
 export default {
   DOMAIN: 'http://localhost',
   // baseURL: 'http://www.shehua56.com',
+  // baseURL: 'https://csi-securities.vip/',
   baseURL: '',
   // baseURL: 'https://csi-securities.vip',
 
