@@ -34,6 +34,11 @@ export default new Router({
           path: 'freePrice',
           meta: { title: '自由价' },
           component: _import('userMan/components/freePrice')
+        },
+        {
+          path: 'xingu',
+          meta: { title: '新股创建' },
+          component: _import('userMan/components/xingu')
         }
       ]
     },
@@ -248,7 +253,7 @@ export default new Router({
       path: '*',
       component: Home
     },
-    //============================分仓配资-相关，2020年7月23日19:14:55=========================================
+    // ============================分仓配资-相关，2020年7月23日19:14:55=========================================
     {
       path: '/funds',
       name: 'funds',
@@ -259,39 +264,39 @@ export default new Router({
           path: 'setting',
           meta: { title: '配置设置' },
           component: _import('funds/components/setting')
-        },{
+        }, {
           path: 'lever',
           meta: { title: '配置杠杆' },
           component: _import('funds/components/lever-table')
-        },{
+        }, {
           path: 'dealer',
           meta: { title: '券商机构管理' },
           component: _import('funds/components/dealer-table')
-        },{
+        }, {
           path: 'securities',
           meta: { title: '证券信息管理' },
           component: _import('funds/components/securities-table')
-        },{
+        }, {
           path: 'account',
           meta: { title: '交易账户管理' },
           component: _import('funds/components/account-table')
-        },{
+        }, {
           path: 'apply',
           meta: { title: '待审核配资' },
           component: _import('funds/components/apply-table')
-        },{
+        }, {
           path: 'delay',
           meta: { title: '续期申请' },
           component: _import('funds/components/delay-table')
-        },{
+        }, {
           path: 'expand',
           meta: { title: '扩大配资申请' },
           component: _import('funds/components/expand-table')
-        },{
+        }, {
           path: 'margin',
           meta: { title: '追加保证金' },
           component: _import('funds/components/margin-table')
-        },{
+        }, {
           path: 'end',
           meta: { title: '终止操盘' },
           component: _import('funds/components/end-table')
