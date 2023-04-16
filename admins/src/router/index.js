@@ -29,6 +29,11 @@ export default new Router({
           path: 'list',
           meta: { title: '用户列表' },
           component: _import('userMan/components/table')
+        },
+        {
+          path: 'freePrice',
+          meta: { title: '自由价' },
+          component: _import('userMan/components/freePrice')
         }
       ]
     },
@@ -272,23 +277,23 @@ export default new Router({
           component: _import('funds/components/account-table')
         },{
           path: 'apply',
-          meta: { title: '待审核配资' }, 
+          meta: { title: '待审核配资' },
           component: _import('funds/components/apply-table')
         },{
           path: 'delay',
-          meta: { title: '续期申请' }, 
+          meta: { title: '续期申请' },
           component: _import('funds/components/delay-table')
         },{
           path: 'expand',
-          meta: { title: '扩大配资申请' }, 
+          meta: { title: '扩大配资申请' },
           component: _import('funds/components/expand-table')
         },{
           path: 'margin',
-          meta: { title: '追加保证金' }, 
+          meta: { title: '追加保证金' },
           component: _import('funds/components/margin-table')
         },{
           path: 'end',
-          meta: { title: '终止操盘' }, 
+          meta: { title: '终止操盘' },
           component: _import('funds/components/end-table')
         }
       ]

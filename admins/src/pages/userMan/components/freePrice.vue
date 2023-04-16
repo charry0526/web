@@ -3,34 +3,8 @@
     <el-form :inline="true" :model="info" class="demo-form-inline" size="small">
       <el-card class="box-card">
         <div slot="header" class="clearfix">
-          <span>保证金设置</span>
-          <span class="sub-tit">
-                    请按照括号中的示例填写
-                </span>
-        </div>
-        <div class="text item">
-          <el-row>
-            <el-col :span="6">
-              <el-form-item label="保证金最小值（例:100，单位元）">
-                <el-input class="form-input" v-model="info.marginMin" placeholder="保证金最小值"></el-input>
-              </el-form-item>
-            </el-col>
-            <el-col :span="6">
-              <el-form-item label="保证金最大值（例:10000，单位元）">
-                <el-input class="form-input" v-model="info.marginMax" placeholder="保证金最大值"></el-input>
-              </el-form-item>
-            </el-col>
-          </el-row>
-        </div>
-      </el-card>
-
-
-      <el-card class="box-card">
-        <div slot="header" class="clearfix">
-          <span>免息设置</span>
-          <span class="sub-tit">
-                    填写规则请按照括号中的示例填写，":"统一为英文中的字符，提现时间为24小时制，请填写整数
-                </span>
+          <span>*选择股票：</span>
+          <el-input class="form-input" v-model="info.interestFreeLever" placeholder="免息杠杆"></el-input>
         </div>
         <div class="text item">
           <el-row>

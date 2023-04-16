@@ -1,13 +1,13 @@
 <template>
-  <div 
-    class="nav-left" 
-    :unique-opened='true' 
+  <div
+    class="nav-left"
+    :unique-opened='true'
     :style="contentStyleObj"
   >
     <el-scrollbar style="height: 100%">
-      <el-menu 
-        :default-openeds="index" 
-        :default-active="itemMenu" 
+      <el-menu
+        :default-openeds="index"
+        :default-active="itemMenu"
         :collapse="isCollapse"
         background-color="#1f2636"
         text-color="rgb(191, 203, 217)"
@@ -16,7 +16,7 @@
         <!-- <div class="logo-img text-center">
           <img :src="siteInfo.siteLogo" alt="logo">
         </div> -->
-        
+
         <!-- <el-submenu index="0">
           <template slot="title">
             <router-link to="/home" tag="li">
@@ -46,11 +46,14 @@
             <router-link to="/userMan/list?type=1">
               <el-menu-item index="2-2">模拟用户</el-menu-item>
             </router-link>
+            <router-link to="/userMan/freePrice">
+              <el-menu-item index="2-3">自由价创建</el-menu-item>
+            </router-link>
           </el-menu-item-group>
         </el-submenu>
 
 
-        
+
         <el-submenu index="3">
           <template slot="title">
             <i class="iconfont icon-dailiguanli"></i>
@@ -61,7 +64,7 @@
               <el-menu-item index="3-1">代理列表</el-menu-item>
             </router-link>
           </el-menu-item-group>
-          
+
           <!-- <router-link to="/agentStatistics" tag="li">
               <el-menu-item index="3-2">股票持仓统计</el-menu-item>
           </router-link>
@@ -93,43 +96,43 @@
             </router-link>
             <router-link to="/funds/account" tag="li">
               <el-menu-item index="12-5">交易账户管理</el-menu-item>
-            </router-link> 
+            </router-link>
             <router-link to="/funds/apply?type=0" tag="li">
               <el-menu-item index="12-6">待审核配资</el-menu-item>
-            </router-link> 
+            </router-link>
             <router-link to="/funds/apply?type=1" tag="li">
               <el-menu-item index="12-7">操盘中配资</el-menu-item>
-            </router-link> 
+            </router-link>
             <router-link to="/funds/apply?type=2" tag="li">
               <el-menu-item index="12-8">未通过配资</el-menu-item>
-            </router-link> 
+            </router-link>
             <router-link to="/funds/apply?type=3" tag="li">
               <el-menu-item index="12-8">到期配资</el-menu-item>
-            </router-link> 
+            </router-link>
             <router-link to="/funds/apply?type=4" tag="li">
               <el-menu-item index="12-9">已结束配资</el-menu-item>
-            </router-link> 
+            </router-link>
             <router-link to="/funds/delay?type=0" tag="li">
               <el-menu-item index="12-10">续期申请</el-menu-item>
-            </router-link> 
+            </router-link>
             <router-link to="/funds/delay?type=1" tag="li">
               <el-menu-item index="12-11">续期记录</el-menu-item>
-            </router-link> 
+            </router-link>
             <router-link to="/funds/expand?type=0" tag="li">
               <el-menu-item index="12-12">扩大配资申请</el-menu-item>
             </router-link>
             <router-link to="/funds/expand?type=1" tag="li">
               <el-menu-item index="12-13">扩大配资记录</el-menu-item>
-            </router-link> 
+            </router-link>
             <router-link to="/funds/margin?type=0" tag="li">
               <el-menu-item index="12-14">追加保证金申请</el-menu-item>
-            </router-link> 
+            </router-link>
             <router-link to="/funds/margin?type=1" tag="li">
               <el-menu-item index="12-15">追加保证金记录</el-menu-item>
-            </router-link> 
+            </router-link>
             <router-link to="/funds/end?type=0" tag="li">
               <el-menu-item index="12-16">终止操盘申请</el-menu-item>
-            </router-link> 
+            </router-link>
             <router-link to="/funds/end?type=1" tag="li">
               <el-menu-item index="12-17">终止操盘记录</el-menu-item>
             </router-link>
