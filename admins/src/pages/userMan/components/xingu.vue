@@ -31,7 +31,7 @@
         <el-row :gutter="10">
           <el-col :span="12">
             <el-form-item label="上架时间"
-                          prop="data">
+                          prop="fxtime">
               <el-date-picker style="width:300px"
                               v-model="info.fxtime"
                               type="date"
