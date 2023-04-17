@@ -163,10 +163,20 @@ export default {
   },
   methods: {
     /**
+     * 重置
+     */
+    restet () {
+      for (const key in this.info) {
+        this.info[key] = ''
+      }
+      this.info.lever = '1/3/5/10'
+      this.info.zt = 1
+      this.$refs.detailDialog.dialogVisible = false
+    },
+    /**
      * 确认 创建
      */
     createOrder () {
-      console.log(11)
       api.addESOP(this.info).then(res => {
         if (res.status == 0) {
           this.$message({
@@ -174,6 +184,11 @@ export default {
             type: 'success'
           })
         }
+        console.log(2)
+        this.restet()
+      }).catch(() => {
+        console.log(111)
+        this.restet()
       })
     },
     /**
@@ -205,7 +220,7 @@ export default {
      * describe 获取最低数量
      */
     getnumData () {
-      this.numData = [{ id: 0, label: '1' }, { id: 1, label: '2' }]
+      this.numData = [{ id: 0, label: '1' }, { id: 1, label: '2' }, { id: 2, label: '4' }, { id: 3, label: '6' }, { id: 4, label: '8' }, { id: 5, label: '10' }]
     },
     submitForm (formName) {
       this.$refs[formName].validate((valid) => {
