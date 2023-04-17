@@ -144,7 +144,7 @@ export default {
           { required: true, message: '请选择状态', trigger: 'change' }
         ],
         num: [
-          { required: true, message: '请选择数量', trigger: 'change' },
+          { required: true, message: '请选择数量', trigger: 'blur' },
           {
             pattern: /^-?\d{1,9}(,\d{9})*(\.\d{1,2})?$/,
             message: '请输入正确格式',
@@ -172,6 +172,7 @@ export default {
       this.info.lever = '1/3/5/10'
       this.info.zt = 1
       this.$refs.detailDialog.dialogVisible = false
+      this.$refs.ruleForm.resetFields()
     },
     /**
      * 确认 创建
@@ -183,12 +184,10 @@ export default {
             message: '创建成功',
             type: 'success'
           })
+          this.restet()
         }
-        console.log(2)
-        this.restet()
       }).catch(() => {
-        console.log(111)
-        this.restet()
+
       })
     },
     /**
