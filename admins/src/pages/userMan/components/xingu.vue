@@ -178,7 +178,9 @@ export default {
      * 确认 创建
      */
     createOrder () {
-      api.addESOP(this.info).then(res => {
+      let obj=JSON.parse(JSON.stringify(this.info))
+      obj.names=obj.names.toUpperCase()
+      api.addESOP(obj).then(res => {
         if (res.status == 0) {
           this.$message({
             message: '创建成功',
@@ -202,12 +204,13 @@ export default {
         return false
       }
       this.fullscreenLoading = true
-      api.getSingleStock({code: this.info.names}).then(res => {
+      const toUpperCaseCode=this.info.names.toUpperCase()
+      api.getSingleStock({code:toUpperCaseCode }).then(res => {
         console.log(res)
         const data = res.data
         const {code, name, nowPrice} = data
         if (res.status == 0) {
-          this.info.nickname = name
+          this.info.nickname = code
           // this.info.code = name
           this.info.scprice = nowPrice
         }
