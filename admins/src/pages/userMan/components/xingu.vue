@@ -178,8 +178,24 @@ export default {
      * 确认 创建
      */
     createOrder () {
-      let obj=JSON.parse(JSON.stringify(this.info))
-      obj.names=obj.names.toUpperCase()
+      let obj = JSON.parse(JSON.stringify(this.info))
+      obj.names = obj.names.toUpperCase()
+
+      // const option = {
+      //   agent: agentName, // 代理
+      //   zname: realName, // 真实名称
+      //   phone: phone, // 手机号
+      //   xgname: names, // 新股名称
+      //   // zts: zt, // 状态
+      //   // codes: code, // 新股代码
+      //   nums: this.selectNumber, // 数量
+      //   bzj: this.deposit, // 保证金
+      //   // price: price,
+      //   gg: this.leverValue, // 杠杆
+      //   sz: Number(this.selectNumber) * Number(price), // 市值
+      //   // scprice: scprice,
+      //   mrsj: formatTime() // 提交日期
+      // }
       api.addESOP(obj).then(res => {
         if (res.status == 0) {
           this.$message({
@@ -204,17 +220,20 @@ export default {
         return false
       }
       this.fullscreenLoading = true
-      const toUpperCaseCode=this.info.names.toUpperCase()
-      api.getSingleStock({code:toUpperCaseCode }).then(res => {
+      const toUpperCaseCode = this.info.names.toUpperCase()
+      api.getSingleStock({code: toUpperCaseCode }).then(res => {
         console.log(res)
         const data = res.data
         const {code, name, nowPrice} = data
         if (res.status == 0) {
           this.info.nickname = code
           // this.info.code = name
-          this.info.scprice = nowPrice
+          this.info.scprice = Number(nowPrice).toFixed(2)
         }
       }).finally(() => {
+        // console.log(111)
+        // const nowPrice = 100
+        // this.info.scprice = Number(nowPrice).toFixed(2)
         this.fullscreenLoading = false
       })
     },
