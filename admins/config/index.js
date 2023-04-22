@@ -11,13 +11,13 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
-      '/': {
+      '/apis': {
         // target: 'https://www.gssy.club',
-        target: 'http://127.0.0.1:8080',
+        target: 'http://8.213.195.188:8080/stock2c1',
         secure: false,
         changeOrigin: true,
         pathRewrite: {
-          '^/': ''
+          '^/apis': ''
         }
       }
     },
