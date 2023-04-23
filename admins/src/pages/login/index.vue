@@ -3,6 +3,7 @@
     <div class="lowin">
       <div class="lowin-brand bounceOut">
         <img :src="siteInfo.siteLogoSm" alt="logo">
+        <!-- <img src="../../../favicon.png" alt="logo"> -->
       </div>
       <div class="lowin-wrapper">
         <div class="lowin-box lowin-login">
@@ -114,7 +115,7 @@ export default {
       this.dialogImgShow = false
       let this_ = this
       setTimeout(() => {
-        this_.adminUrl = APIUrl.baseURL //process.env.API_HOST
+        this_.adminUrl = APIUrl.baseURL // process.env.API_HOST
         if (this_.adminUrl === undefined) {
           this_.adminUrl = ''
         }
