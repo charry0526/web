@@ -45,11 +45,11 @@
             <router-link to="/userMan/list?type=1">
               <el-menu-item index="2-2">模拟用户</el-menu-item>
             </router-link>
-            <router-link to="/userMan/freePrice">
+            <!-- <router-link to="/userMan/freePrice">
               <el-menu-item index="2-3">自由价创建</el-menu-item>
-            </router-link>
+            </router-link> -->
              <router-link to="/userMan/xingu">
-              <el-menu-item index="2-4">新股申购</el-menu-item>
+              <el-menu-item index="2-4">自由价创建</el-menu-item>
             </router-link>
           </el-menu-item-group>
         </el-submenu>

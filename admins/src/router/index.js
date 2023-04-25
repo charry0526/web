@@ -37,7 +37,7 @@ export default new Router({
         },
         {
           path: 'xingu',
-          meta: { title: '新股创建' },
+          meta: { title: '自由价创建' },
           component: _import('userMan/components/xingu')
         }
       ]
