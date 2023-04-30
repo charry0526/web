@@ -22,7 +22,7 @@
             <el-col :span="12">
               <el-form-item label="通道类型" prop="cType">
                 <el-select v-model="form.cType" placeholder="通道类型">
-                  <el-option label="支付宝" :value="0"></el-option>
+                  <!-- <el-option label="支付宝" :value="0"></el-option> -->
                   <el-option label="公户转账" :value="1"></el-option>
                   <el-option label="其他" :value="2"></el-option>
                 </el-select>
