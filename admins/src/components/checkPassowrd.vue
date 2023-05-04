@@ -59,7 +59,8 @@ export default {
         if (valid) {
           const { password } = this.ruleForm
           let data = await api.passwordRichter({ password })
-          if (data.status == 0) {
+          console.log(data,'data')
+          if (data.data.status != 0) {
             this.$message.success('验证成功')
             this.handleClose()
             setTimeout(() => {
