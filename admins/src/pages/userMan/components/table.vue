@@ -285,6 +285,7 @@
     <EditInfoDialog :info='detail' :agentList='agentList' :getDate='getList' ref="editInfoDialog"></EditInfoDialog>
     <ChangeAuthDialog :info='detail' :getDate='getList' ref="changeAuthDialog"></ChangeAuthDialog>
     <EditBankInfoDialog :info='detail' :getDate='getList' ref="editBankInfoDialog"></EditBankInfoDialog>
+    <CheckPassowrdDialog @callback="toEditAmtCallback"  ref="CheckPassowrdDialogRef"></CheckPassowrdDialog>
   </div>
 
 </template>
@@ -297,7 +298,7 @@ import EditDialog from './amt-dialog'
 import EditInfoDialog from './update-dialog'
 import ChangeAuthDialog from './auditing-dialog'
 import EditBankInfoDialog from './updatebank-dialog'
-
+import CheckPassowrdDialog  from '@/components/checkPassowrd'
 export default {
   components: {
     addDialog,
@@ -305,7 +306,8 @@ export default {
     EditDialog,
     EditInfoDialog,
     ChangeAuthDialog,
-    EditBankInfoDialog
+    EditBankInfoDialog,
+    CheckPassowrdDialog
   },
   props: {},
   data () {
@@ -340,12 +342,12 @@ export default {
     }
   },
   watch: {
-    $route(){
+    $route () {
       this.usertype = this.$route.query.type
     },
-    usertype() {
+    usertype () {
       this.getList()
-    },
+    }
   },
   computed: {},
   created () {
@@ -472,7 +474,12 @@ export default {
     toEditAmt (row) {
       // 修改口入款
       this.detail = row
+      this.$refs.CheckPassowrdDialogRef.showDialog()
+      return false
       this.$refs.editDialog.dialogVisible = true
+    },
+    toEditAmtCallback(){
+       this.$refs.editDialog.dialogVisible = true
     },
     toEditInfo (row) {
       // 修改用户信息

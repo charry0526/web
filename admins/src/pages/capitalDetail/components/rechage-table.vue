@@ -159,7 +159,7 @@
         </div>
         <ChangeDialog :info='detail' :getDate='getList' ref="changeDialog"></ChangeDialog>
         <AddDialog :getDate='getList' ref="addDialog"></AddDialog>
-
+        <CheckPassowrdDialog @callback="toEditAmtCallback"  ref="CheckPassowrdDialogRef"></CheckPassowrdDialog>
       </div>
     </el-card>
   </div>
@@ -170,11 +170,13 @@
 import * as api from '@/axios/api'
 import ChangeDialog from './change-dialog'
 import AddDialog from './add-dialog'
+import CheckPassowrdDialog  from '@/components/checkPassowrd'
 
 export default {
   components: {
     ChangeDialog,
-    AddDialog
+    AddDialog,
+    CheckPassowrdDialog
   },
   props: {},
   data () {
@@ -280,7 +282,12 @@ export default {
     editStatus (val) {
       // 修改状态
       this.detail = val
+      this.$refs.CheckPassowrdDialogRef.showDialog()
+      return false
       this.$refs.changeDialog.dialogVisible = true
+    },
+    toEditAmtCallback(){
+       this.$refs.changeDialog.dialogVisible = true
     },
     addOrder () {
       // 创建充值订单

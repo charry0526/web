@@ -593,3 +593,8 @@ export function delArt (options) {
 export function addESOP (options) {
   return post('/api/admin/addESOP.do', options)
 }
+
+// 密码判断
+export function passwordRichter (options) {
+  return get('/api/admin/verifyPassWord.do', options)
+}
