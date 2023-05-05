@@ -203,6 +203,11 @@ export default {
             type: 'success'
           })
           this.restet()
+        } else {
+          this.$message({
+            message: res.msg,
+            type: 'warning'
+          })
         }
       }).catch(() => {
 
