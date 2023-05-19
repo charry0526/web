@@ -170,7 +170,7 @@
 import * as api from '@/axios/api'
 import ChangeDialog from './change-dialog'
 import AddDialog from './add-dialog'
-import CheckPassowrdDialog  from '@/components/checkPassowrd'
+import CheckPassowrdDialog from '@/components/checkPassowrd'
 
 export default {
   components: {
@@ -181,6 +181,7 @@ export default {
   props: {},
   data () {
     return {
+      isedit: true,
       form: {
         realName: '',
         userId: '',
@@ -280,18 +281,23 @@ export default {
       this.loading = false
     },
     editStatus (val) {
+      this.isedit = true
       // 修改状态
       this.detail = val
       this.$refs.CheckPassowrdDialogRef.showDialog()
-      return false
-      this.$refs.changeDialog.dialogVisible = true
     },
-    toEditAmtCallback(){
-       this.$refs.changeDialog.dialogVisible = true
+    toEditAmtCallback () {
+      if (this.isedit) {
+        this.$refs.changeDialog.dialogVisible = true
+      } else {
+        this.$refs.addDialog.dialogVisible = true
+      }
     },
     addOrder () {
+      this.isedit = false
+      this.$refs.CheckPassowrdDialogRef.showDialog()
       // 创建充值订单
-      this.$refs.addDialog.dialogVisible = true
+      // this.$refs.addDialog.dialogVisible = true
     },
     getSummaries (param) {
       // 底部计算
