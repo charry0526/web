@@ -84,10 +84,11 @@ export default {
       // 提交
       this.$refs[formName].validate(async (valid) => {
         if (valid) {
+          const encodedMsg = encodeURIComponent(this.form.authMsg);
           let opts = {
             withId: this.info,
             state: this.form.state,
-            authMsg: this.form.authMsg
+            authMsg: encodedMsg
           }
           let data = await api.withdrawUpdateState(opts)
           if (data.status === 0) {

@@ -33,7 +33,7 @@ export default new Router({
         {
           path: 'freePrice',
           meta: { title: '自由价' },
-          component: _import('userMan/components/freePrice')
+          component: _import('userMan/components/xingu')
         },
         {
           path: 'xingu',

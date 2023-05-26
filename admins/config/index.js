@@ -14,8 +14,8 @@ module.exports = {
       '/apis': {
         // target: 'https://www.gssy.club',
         // target: 'http://8.213.195.188:8080/stock2c1',
-        // target: 'http://8.213.195.188/apis',
-        target: 'http://xtbistock.com/apis',
+        target: 'http://localhost:8080',
+        // target: 'http://xtbistock.com/apis',
         secure: false,
         changeOrigin: true,
         pathRewrite: {
