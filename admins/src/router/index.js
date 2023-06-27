@@ -188,6 +188,11 @@ export default new Router({
           path: 'manSetting',
           meta: { title: '管理员列表' },
           component: _import('manSetting/components/table')
+        },
+        {
+          path: 'customer',
+          meta: { title: '客服链接' },
+          component: _import('manSetting/components/customer')
         }
       ]
     }, {

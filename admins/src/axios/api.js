@@ -598,3 +598,12 @@ export function addESOP (options) {
 export function passwordRichter (options) {
   return get('/api/admin/verifyPassWord.do', options)
 }
+// 设置客服地址
+export function setCusAddress (options) {
+  return get('/api/admin/setCSAddress.do ', options)
+}
+
+// 获取客服地址
+export function addCusAddress (options) {
+  return get('/api/admin/getCSAddress.do', options)
+}

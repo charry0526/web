@@ -254,6 +254,9 @@
             <router-link to="/manSet/manSetting" tag="li">
               <el-menu-item index="7-1">管理列表</el-menu-item>
             </router-link>
+            <router-link to="/manSet/customer" tag="li">
+              <el-menu-item index="7-2">客服链接</el-menu-item>
+            </router-link>
           </el-menu-item-group>
         </el-submenu>
         <!-- <el-submenu index="8">
