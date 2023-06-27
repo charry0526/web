@@ -600,10 +600,10 @@ export function passwordRichter (options) {
 }
 // 设置客服地址
 export function setCusAddress (options) {
-  return get('/api/admin/setCSAddress.do ', options)
+  return get('/api/admin/setCSAddress.do', options)
 }
 
 // 获取客服地址
-export function addCusAddress (options) {
+export function getCusAddress (options) {
   return get('/api/admin/getCSAddress.do', options)
 }

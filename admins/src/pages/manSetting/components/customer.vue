@@ -43,7 +43,7 @@ export default {
   },
   methods: {
     getAddress() {
-      api.setCusAddress().then(res => {
+      api.getCusAddress().then(res => {
         if (res.status === 0) {
           this.ruleForm.address = res.data;
         }
@@ -53,7 +53,7 @@ export default {
       this.$refs[formName].validate(valid => {
         if (valid) {
           const { address } = this.ruleForm;
-          api.addCusAddress({ address }).then(res => {
+          api.setCusAddress({ address }).then(res => {
             if (res.status === 0) {
               this.$message.success("修改成功");
               // this.getDate();
