@@ -21,6 +21,9 @@
         <el-form-item label="真实姓名">
           <el-input v-model="form.realName" placeholder="真实姓名"></el-input>
         </el-form-item>
+        <el-form-item label="用户手机">
+          <el-input v-model="form.phone" placeholder="用户手机"></el-input>
+        </el-form-item>
         <el-form-item label="支付时间">
           <el-date-picker
             v-model="form.time"
@@ -189,7 +192,8 @@ export default {
         agentId: '',
         time: '',
         pageNum: 1,
-        pageSize: 10
+        pageSize: 10,
+        phone: ''
       },
       list: {
         list: []
@@ -220,7 +224,7 @@ export default {
         const { export_json_to_excel } = require('../../../assets/js/Export2Excel')
         const tHeader = ['订单号', '用户id', '代理id', '用户名', '充值金额', '充值渠道', '充值状态', '申请时间', '支付时间']
         // 上面设置Excel的表格第一行的标题
-        const filterVal = ['orderSn', 'userId', 'agentId', 'nickName', 'payAmt', 'payChannel', 'orderStatus', 'addTime', 'addTime']
+        const filterVal = ['orderSn', 'userId', 'phone', 'agentId', 'nickName', 'payAmt', 'payChannel', 'orderStatus', 'addTime', 'addTime']
         // 上面的index、phone_Num、school_Name是tableData里对象的属性
         const list = this.list.list // 把data里的tableData存到list
         const data = this.formatJson(filterVal, list)
@@ -263,6 +267,7 @@ export default {
       // 获取表格数据
       let opts = {
         realName: this.form.realName,
+        phone: this.form.phone,
         userId: this.form.userId,
         state: this.form.state,
         agentId: this.form.agentId,
