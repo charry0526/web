@@ -108,7 +108,7 @@ export default {
         // ],
         agentPhone: [
           { required: true, message: '请输入手机号码', trigger: 'blur' },
-          { min: 11, max: 11, message: '请输入正确的手机号', trigger: 'blur' }
+          { min: 10, max: 10, message: '请输入正确的手机号', trigger: 'blur' }
         ],
         agentRealName: [
           { required: true, message: '请输入真实姓名', trigger: 'blur' },

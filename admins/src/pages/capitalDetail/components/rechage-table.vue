@@ -15,12 +15,12 @@
             <el-option label="入金取消" value="3"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="用户id">
-          <el-input v-model="form.userId" placeholder="用户id"></el-input>
-        </el-form-item>
         <el-form-item label="手机号">
-          <el-input v-model="form.realName" placeholder="手机号"></el-input>
+          <el-input v-model="form.userId" placeholder="手机号"></el-input>
         </el-form-item>
+<!--        <el-form-item label="手机号">-->
+<!--          <el-input v-model="form.realName" placeholder="手机号"></el-input>-->
+<!--        </el-form-item>-->
         <!-- <el-form-item label="用户手机">
           <el-input v-model="form.phone" placeholder="用户手机"></el-input>
         </el-form-item> -->
@@ -54,9 +54,9 @@
           :summary-method="getSummaries"
           style="width: 100%">
           <el-table-column
-            width="60px"
+            width="120px"
             prop="userId"
-            label="id">
+            label="手机号">
           </el-table-column>
           <el-table-column
             prop="orderSn"

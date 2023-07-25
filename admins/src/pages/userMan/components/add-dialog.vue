@@ -73,7 +73,7 @@ export default {
       rule: {
         phone: [
           { required: true, message: '请输入手机号码', trigger: 'blur' },
-          { min: 11, max: 11, message: '请输入正确的手机号码', trigger: 'blur' }
+          { min: 10, max: 10, message: '请输入正确的手机号码', trigger: 'blur' }
         ],
         pwd: [
           { required: true, message: '请输入密码', trigger: 'blur' },
