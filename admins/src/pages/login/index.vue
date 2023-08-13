@@ -23,6 +23,7 @@
             <div class="lowin-group password-group">
               <label>验证码</label>
               <img @click="refreshImg" class='code-img' :src="adminUrl+'/code/getCode.do?time=' + imgCodeTime" alt="验证码">
+<!--              <img @click="refreshImg" class='code-img' :src="'http://127.0.0.1:8080/stock2c1_war/code/getCode.do?time=' + imgCodeTime" alt="验证码">-->
               <input v-model="code2" @keyup.enter="tologin" type="text" placeholder="验证码" name="password"
                      class="lowin-input">
             </div>
@@ -48,7 +49,12 @@
 // import '@/assets/style/login.css'
 import * as api from '@/axios/api'
 import { isNull, isPhone } from '@/utils/utils'
-import APIUrl from '@/axios/api.url' // 引入api.url.js
+import APIUrl from '@/axios/api.url'
+import {getPKConfig} from "../../axios/api"; // 引入api.url.js
+// 引入对称加密方法
+import { encAes, genRandKey, decAes } from '@/utils/aes'
+// 引入加密模块
+const JSEncrypt = require('encryptlong')
 
 export default {
   components: {},
@@ -59,7 +65,8 @@ export default {
       code2: '',
       name: '',
       phone: '',
-      password: '',
+      encPassword: '',
+      prKey: '',
       siteInfo: '',
       imgCodeTime: 0
     }
@@ -90,24 +97,52 @@ export default {
         //     this.$message.error('请输入正确图形验证码')
         //     return
       } else {
-        let opts = {
-          adminPhone: this.phone,
-          adminPwd: this.password,
-          verifyCode: this.code2
+        // 通过接口获取公钥，后端有私钥进行解密
+        let PKopts = {
+          contents: this.phone
         }
-        let data = await api.login(opts)
-        if (data.status === 0) {
-          this.$store.state.userInfo.phone = this.phone
-          this.$store.state.userInfo.adminName = data.data.adminName
-          this.$store.state.userInfo.id = data.data.id
-          window.localStorage.setItem('adminName', data.data.adminName)
-          window.localStorage.setItem('id', data.data.id)
-          // this.setCookie('USER_TOKEN', data.cookie)
-          this.$router.push('/home')
+        let pdata = await api.getPKConfig(PKopts)
+        if (pdata.status === 0) {
+          const pubKey = pdata.data
+          // 获取公钥，后用公钥对随机密钥非对称加密
+          this.publicKey = pubKey
+          // 生成随机密钥，用随机密钥对称加密加密用户名，密码
+          const randomKey = genRandKey()
+          // this.encUser = encAes(this.phone, randomKey)
+          this.encPassword = encAes(this.password, randomKey)
+          this.pwd = decAes(this.encPassword, randomKey)
+          this.prKey = this.creatEncry(this.publicKey, randomKey)
         } else {
-          this.$message.error(data.msg)
+          this.$message.error('输入信息有误，请重新登录！')
         }
       }
+      let opts = {
+        adminPhone: this.phone,
+        adminPwd: this.encPassword,
+        verifyCode: this.code2,
+        pKey: this.prKey
+      }
+      let data = await api.login(opts)
+      if (data.status === 0) {
+        this.$store.state.userInfo.phone = this.phone
+        this.$store.state.userInfo.adminName = data.data.adminName
+        this.$store.state.userInfo.id = data.data.id
+        window.localStorage.setItem('adminName', data.data.adminName)
+        window.localStorage.setItem('id', data.data.id)
+        // this.setCookie('USER_TOKEN', data.cookie)
+        this.$router.push('/home')
+      } else {
+        this.$message.error(data.msg)
+      }
+    },
+    // 非对称加密方法
+    creatEncry (publicKey, param) {
+      console.log('publicKey---: ', publicKey)
+      const encryptor = new JSEncrypt.JSEncrypt()
+      // 设置公钥
+      encryptor.setPublicKey(publicKey)
+      // 加密随机密钥
+      return encryptor.encryptLong(param)
     },
     refreshImg () {
       this.adminUrl = ''

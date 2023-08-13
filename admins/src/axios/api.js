@@ -7,7 +7,10 @@ import { post, get } from '@/axios/index'
 export function login (options) {
   return post('/api/admin/login.do', options)
 }
-
+// 获取加密公钥
+export function getPKConfig (options) {
+  return post('/api/admin/getPKConfig.do', options)
+}
 // 更改密码
 export function changepwd (options) {
   return post('/admin/update.do', options)

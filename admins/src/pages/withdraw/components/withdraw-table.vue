@@ -67,6 +67,13 @@
               </p>
             </template>
           </el-table-column>
+
+          <el-table-column
+            prop="phone"
+            width="120px"
+            label="电话号码">
+          </el-table-column>
+
           <el-table-column
             width="100px"
             prop="withAmt"
@@ -216,9 +223,9 @@ export default {
     export2Excel () {
       require.ensure([], () => {
         const { export_json_to_excel } = require('../../../assets/js/Export2Excel')
-        const tHeader = ['用户id', '代理id', '用户名', '出金金额', '手续费', '状态', '提现银行', '提现支行地址', '银行卡号', '失败原因', '申请时间', '出金时间']
+        const tHeader = ['用户id', '代理id', '用户名', '电话号码', '出金金额', '手续费', '状态', '提现银行', '提现支行地址', '银行卡号', '失败原因', '申请时间', '出金时间']
         // 上面设置Excel的表格第一行的标题
-        const filterVal = ['id', 'agentId', 'withName', 'withAmt', 'withFee', 'withStatus', 'bankName', 'bankAddress', 'bankNo', 'withMsg', 'applyTime', 'transTime']
+        const filterVal = ['id', 'agentId', 'withName', 'phone', 'withAmt', 'withFee', 'withStatus', 'bankName', 'bankAddress', 'bankNo', 'withMsg', 'applyTime', 'transTime']
         // 上面的index、phone_Num、school_Name是tableData里对象的属性
         const list = this.list.list // 把data里的tableData存到list
         const data = this.formatJson(filterVal, list)

@@ -3,10 +3,12 @@ import qs from 'qs' // 引入qs
 // import store from '@/store'
 import APIUrl from './api.url' // 引入api.url.js
 import router from '@/router'
+import {config} from "shelljs";
 
 // axios 默认配置  更多配置查看Axios中文文档
 axios.defaults.timeout = 50000 // 超时默认值
 axios.defaults.baseURL = APIUrl.baseURL // 默认baseURL
+// axios.defaults.baseURL = 'http://127.0.0.1:8080/stock2c1_war/' // 本地开发url
 // axios.defaults.responseType  = 'json'         // 默认数据响应类型
 axios.defaults.headers.common['Content-Type'] = 'application/json;charset=UTF-8'
 axios.defaults.withCredentials = true // 表示跨域请求时是否需要使用凭证
@@ -14,7 +16,7 @@ axios.defaults.withCredentials = true // 表示跨域请求时是否需要使用
 // http request 拦截器
 // 在ajax发送之前拦截 比如对所有请求统一添加header token
 axios.interceptors.request.use(
-  config => {
+  // config => {
     // config.data = JSON.stringify(config.data);
     // config.headers = {
     //     'Content-Type':'application/x-www-form-urlencoded'
@@ -24,6 +26,10 @@ axios.interceptors.request.use(
     //     config.headers.Authorization = `token ${store.state.userId}`;
     // }
     // console.log(config)
+  //   return config
+  // },
+  config => {
+    config.headers.referer = 'http://127.0.0.1:8080'
     return config
   },
   err => {
