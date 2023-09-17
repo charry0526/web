@@ -23,7 +23,6 @@
             <div class="lowin-group password-group">
               <label>验证码</label>
               <img @click="refreshImg" class='code-img' :src="adminUrl+'/code/getCode.do?time=' + imgCodeTime" alt="验证码">
-<!--              <img @click="refreshImg" class='code-img' :src="'http://127.0.0.1:8080/stock2c1_war/code/getCode.do?time=' + imgCodeTime" alt="验证码">-->
               <input v-model="code2" @keyup.enter="tologin" type="text" placeholder="验证码" name="password"
                      class="lowin-input">
             </div>
@@ -124,6 +123,7 @@ export default {
       }
       let data = await api.login(opts)
       if (data.status === 0) {
+        console.log("进来！！！！")
         this.$store.state.userInfo.phone = this.phone
         this.$store.state.userInfo.adminName = data.data.adminName
         this.$store.state.userInfo.id = data.data.id

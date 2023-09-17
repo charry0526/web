@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper">
     <el-container style="border: 1px solid #eee">
-      
+
       <el-container>
         <!-- 头部 -->
         <el-aside :width="isCollapse ? '60px' : '200px'">
@@ -71,8 +71,6 @@ export default {
     if (isCollapse === '1') {
       this.isCollapse = true
     }
-
-
     window.addEventListener('resize', this.getHeight)
     this.getHeight()
   },
