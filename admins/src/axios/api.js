@@ -592,7 +592,7 @@ export function delArt (options) {
   return post('/admin/art/delArt.do', options)
 }
 
-// 删除公告
+// 新增红利股
 export function addESOP (options) {
   return post('/api/admin/addESOP.do', options)
 }

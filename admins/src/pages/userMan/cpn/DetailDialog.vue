@@ -66,6 +66,12 @@
                   {{(Number(info.price)-Number(info.scprice))*info.num}}
                 </span>
               </el-col>
+              <el-col :span="8">
+                保证金比例（例：0.25，百分比）：
+                <span>
+                  {{info.marginRatio}}
+                </span>
+              </el-col>
             </el-row>
             <p class="content">
             </p>

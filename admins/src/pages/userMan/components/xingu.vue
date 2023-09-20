@@ -89,6 +89,14 @@
               </el-input>
             </el-form-item>
           </el-col>
+          <el-col :span="12">
+            <el-form-item label="保证金比例（例：0.25，百分比）"
+                          prop="marginRatio">
+              <el-input style="width:300px"
+                        placeholder="输入保证金比例值"
+                        v-model="info.marginRatio"></el-input>
+            </el-form-item>
+          </el-col>
         </el-row>
         <el-row class="text-center submit-btn">
           <el-button @click="submitForm('ruleForm')"
@@ -150,6 +158,9 @@ export default {
             message: '请输入正确格式',
             trigger: 'blur'
           }
+        ],
+        marginRatio: [
+          { required: true, message: '输入保证金比例值', trigger: 'change' }
         ]
       },
       numData: [], // 最低数量数据
