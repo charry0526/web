@@ -222,6 +222,23 @@
             </router-link>
           </el-menu-item-group>
         </el-submenu>
+        <el-submenu index="10">
+          <template slot="title">
+            <i class="iconfont icon-xinyongjin"></i>
+            <span slot="title">信用金管理</span>
+          </template>
+          <el-menu-item-group>
+            <router-link to="/crd/template" tag="li">
+              <el-menu-item index="1-3">信用金模板</el-menu-item>
+            </router-link>
+            <router-link to="/crd/credit" tag="li">
+              <el-menu-item index="1-1">信用金管理</el-menu-item>
+            </router-link>
+            <router-link to="/crd/topUp" tag="li">
+              <el-menu-item index="1-2">充值信用金管理</el-menu-item>
+            </router-link>
+          </el-menu-item-group>
+        </el-submenu>
         <el-submenu index="6">
           <template slot="title">
             <i class="iconfont icon-rizhiguanli1"></i>

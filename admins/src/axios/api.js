@@ -63,10 +63,92 @@ export function cashList (options) {
   return post('/admin/cash/list.do', options)
 }
 
+// /*******信用金管理********/
+
+// 信用金列表
+export function creaditList (options) {
+  return post('/admin/moneyCredit/list.do', options)
+}
+
+// 信用金审核
+export function creaditAudit (options) {
+  return post('/admin/moneyCredit/audit.do', options)
+}
+
+// 信用金详情
+export function creaditDetails (options) {
+  return post('/admin/moneyCredit/details.do', options)
+}
+
+// 信用金删除
+export function creaditDelete (options) {
+  return post('/admin/moneyCredit/delete.do', options)
+}
+
+// /*******信用金充值记录管理********/
+
+// 信用金充值记录列表
+export function topuptList (options) {
+  return post('/admin/topupMoney/list.do', options)
+}
+
+// 信用金充值记录审核
+export function topuptAudit (options) {
+  return post('/admin/topupMoney/audit.do', options)
+}
+
+// 信用金充值记录详情
+export function topupDetails (options) {
+  return post('/admin/topupMoney/details.do', options)
+}
+
+// 信用金充值记录删除
+export function topupDelete (options) {
+  return post('/admin/topupMoney/delete.do', options)
+}
+
+// /*******信用金模板********/
+
+// 信用金模板列表
+export function templatetList (options) {
+  return post('/admin/template/list.do', options)
+}
+
+// 新增信用金模板
+export function templatettAdd (options) {
+  return post('/admin/template/add.do', options)
+}
+
+// 一键分配信用金
+export function templatettAllocation (options) {
+  return post('/admin/template/allocation.do', options)
+}
+
+// 修改信用金模板
+export function templatettUpd (options) {
+  return post('/admin/template/upd.do', options)
+}
+
+// 信用金模板详情
+export function templatetDetails (options) {
+  return post('/admin/template/details.do', options)
+}
+
+// 信用金模板删除
+export function templatetDelete (options) {
+  return post('/admin/template/delete.do', options)
+}
+
+
 // /******用户管理*******/
 // 获取用户管理数据
 export function getUserManList (options) {
   return post('/admin/user/list.do', options)
+}
+
+// 获取用户数据下拉
+export function getUserListPull (options) {
+  return post('/admin/user/listPull.do', options)
 }
 
 // 获取单个用户详细数据

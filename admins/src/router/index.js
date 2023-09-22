@@ -151,6 +151,26 @@ export default new Router({
         }
       ]
     }, {
+      path: '/crd',
+      name: 'crd',
+      meta: { title: '信用金管理' },
+      component: _import('Main'),
+      children: [
+        {
+          path: 'credit',
+          meta: { title: '信用金管理' },
+          component: _import('credit/components/credit-table')
+        }, {
+          path: 'topUp',
+          meta: { title: '充值信用金管理' },
+          component: _import('topUp/components/topUp-table')
+        }, {
+          path: 'template',
+          meta: { title: '信用金模板' },
+          component: _import('template/components/template-table')
+        }
+      ]
+    }, {
       path: '/log',
       name: 'log',
       meta: { title: '日志管理' },

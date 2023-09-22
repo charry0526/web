@@ -14060,6 +14060,10 @@ a {
   content: "\E7E6"
 }
 
+.icon-xinyongjin:before {
+  content: "\E600"
+}
+
 .icon-user-5:before {
   content: "\E600"
 }
