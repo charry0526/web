@@ -7,6 +7,9 @@
             <el-option v-for="i in agentList" :key="i.key" :label="i.nickName" :value="i.id"></el-option>
           </el-select>
         </el-form-item>
+        <el-form-item label="手机号">
+          <el-input v-model="form.phone" placeholder="手机号"></el-input>
+        </el-form-item>
         <el-form-item label="状态">
           <el-select v-model="form.auditStatus" placeholder="状态">
             <el-option label="未审核" value="3"></el-option>
@@ -15,7 +18,7 @@
             <el-option label="审核不通过" value="2"></el-option>
           </el-select>
         </el-form-item>
-       
+
         <el-form-item>
           <el-button type="primary" @click="onSubmit">查询</el-button>
           <el-button type="success" @click="export2Excel">导出当前页数据</el-button>
@@ -141,7 +144,7 @@
               <el-button type="primary" size="small"  v-if="scope.row.auditStatus == 0" @click="toChangeAudit(scope.row)">审核</el-button>
               <!-- <el-button type="primary" size="small"  v-if="scope.row.auditStatus == 3" @click="toChangeAudit(scope.row)">审核</el-button> -->
               <el-button type="danger" size="small" @click="toDelete(scope.row)">删除</el-button>
-            
+
             </template>
           </el-table-column>
         </el-table>
@@ -182,6 +185,7 @@ export default {
       isedit: true,
       form: {
         userId: '',
+        phone: '',
         auditStatus: '',
         amountCreditAppliedTime: '',
         pageNum: 1,
