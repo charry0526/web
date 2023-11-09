@@ -22,6 +22,9 @@
         <el-form-item label="真实姓名">
           <el-input v-model="form.realName" placeholder="真实姓名"></el-input>
         </el-form-item>
+        <el-form-item label="手机号">
+          <el-input v-model="form.phone" placeholder="手机号"></el-input>
+        </el-form-item>
         <el-form-item label="出金时间">
           <el-date-picker
             v-model="form.time"
@@ -192,6 +195,7 @@ export default {
         status: '',
         agentId: '',
         userId: '',
+        phone: '',
         time: '',
         pageNum: 1,
         pageSize: 10
@@ -270,6 +274,7 @@ export default {
         agentId: this.form.agentId,
         realName: this.form.realName,
         userId: this.form.userId,
+        phone: this.form.phone,
         state: this.form.status,
         beginTime: this.form.time ? this.form.time[0] : '',
         endTime: this.form.time ? this.form.time[1] : '',
