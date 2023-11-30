@@ -82,7 +82,7 @@
             width="400px"
             label="操作">
             <template slot-scope="scope">
-              <el-button type="success" size="small" :style="{ display: scope.row.delFlag==1?'none':'' }"  @click="toAllocation(scope.row)">一键分配信用金</el-button>
+<!--              <el-button type="success" size="small" :style="{ display: scope.row.delFlag==1?'none':'' }"  @click="toAllocation(scope.row)">一键分配信用金</el-button>-->
               <el-button type="primary" size="small" @click="toChangeUpd(scope.row)">修改</el-button>
               <el-button type="danger" size="small" @click="toDelete(scope.row)">删除</el-button>
             </template>

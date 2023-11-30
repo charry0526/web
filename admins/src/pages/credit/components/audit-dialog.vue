@@ -19,36 +19,36 @@
            <el-form-item label="手机号" prop="phone">
             <el-input disabled v-model="info.phone" placeholder="手机号"></el-input>
           </el-form-item>
-           <el-form-item label="信用评分" prop="creditScore">
-            <el-input disabled v-model="info.creditScore" placeholder="信用评分"></el-input>
-          </el-form-item>
-           <el-form-item label="贷款限额" prop="creditLimit">
-            <el-input disabled v-model="info.creditLimit" placeholder="贷款限额"></el-input>
-          </el-form-item>
+<!--           <el-form-item label="信用评分" prop="creditScore">-->
+<!--            <el-input disabled v-model="info.creditScore" placeholder="信用评分"></el-input>-->
+<!--          </el-form-item>-->
+<!--           <el-form-item label="贷款限额" prop="creditLimit">-->
+<!--            <el-input disabled v-model="info.creditLimit" placeholder="贷款限额"></el-input>-->
+<!--          </el-form-item>-->
            <el-form-item label="已借贷额" prop="amountBorrowed">
             <el-input disabled v-model="info.amountBorrowed" placeholder="已借贷额"></el-input>
           </el-form-item>
-           <el-form-item label="剩余贷额" prop="residualCredit">
-            <el-input disabled v-model="info.residualCredit" placeholder="剩余贷额"></el-input>
-          </el-form-item>
+<!--           <el-form-item label="剩余贷额" prop="residualCredit">-->
+<!--            <el-input disabled v-model="info.residualCredit" placeholder="剩余贷额"></el-input>-->
+<!--          </el-form-item>-->
            <el-form-item label="该次申请贷额" prop="amountCreditApplied">
-            <el-input disabled v-model="info.amountCreditApplied" placeholder="该次申请贷额"></el-input> 
+            <el-input disabled v-model="info.amountCreditApplied" placeholder="该次申请贷额"></el-input>
           </el-form-item>
            <!-- <el-form-item label="申请贷款时间" prop="amountCreditAppliedTime">
             <el-input disabled v-model="info.amountCreditAppliedTime"  placeholder="申请贷款时间">
             </el-input>
           </el-form-item> -->
-        
+
 
          <el-form-item label="审核状态" prop="auditStatus">
             <el-select v-model="form.auditStatus" placeholder="审核状态">
               <el-option label="审核中" value="0"></el-option>
               <el-option label="审核通过" value="1"></el-option>
               <el-option label="审核不通过" value="2"></el-option>
-              <el-option label="未审核" value="3"></el-option>
+<!--              <el-option label="未审核" value="3"></el-option>-->
             </el-select>
           </el-form-item>
-          
+
            <el-form-item label="审核原因" prop="auditReason">
             <el-input  type="textarea" v-model="form.auditReason" placeholder="审核原因" ></el-input>
           </el-form-item>
@@ -94,7 +94,7 @@ export default {
       }
     }
   },
-  watch: { 
+  watch: {
     info (val) {
       if (val) {
         this.form.id = this.info.id

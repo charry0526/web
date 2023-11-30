@@ -85,24 +85,24 @@ export function creaditDelete (options) {
   return post('/admin/moneyCredit/delete.do', options)
 }
 
-// /*******信用金充值记录管理********/
+// /*******信用金还款记录管理********/
 
-// 信用金充值记录列表
+// 信用金还款记录列表
 export function topuptList (options) {
   return post('/admin/topupMoney/list.do', options)
 }
 
-// 信用金充值记录审核
+// 信用金还款记录审核
 export function topuptAudit (options) {
   return post('/admin/topupMoney/audit.do', options)
 }
 
-// 信用金充值记录详情
+// 信用金还款记录详情
 export function topupDetails (options) {
   return post('/admin/topupMoney/details.do', options)
 }
 
-// 信用金充值记录删除
+// 信用金还款记录删除
 export function topupDelete (options) {
   return post('/admin/topupMoney/delete.do', options)
 }

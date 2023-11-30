@@ -232,10 +232,10 @@
               <el-menu-item index="1-3">信用金模板</el-menu-item>
             </router-link>
             <router-link to="/crd/credit" tag="li">
-              <el-menu-item index="1-1">信用金管理</el-menu-item>
+              <el-menu-item index="1-1">信用金贷款记录</el-menu-item>
             </router-link>
             <router-link to="/crd/topUp" tag="li">
-              <el-menu-item index="1-2">充值信用金管理</el-menu-item>
+              <el-menu-item index="1-2">信用金还款记录</el-menu-item>
             </router-link>
           </el-menu-item-group>
         </el-submenu>

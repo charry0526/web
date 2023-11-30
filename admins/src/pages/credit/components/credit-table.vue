@@ -12,7 +12,7 @@
         </el-form-item>
         <el-form-item label="状态">
           <el-select v-model="form.auditStatus" placeholder="状态">
-            <el-option label="未审核" value="3"></el-option>
+<!--            <el-option label="未审核" value="3"></el-option>-->
             <el-option label="审核中" value="0"></el-option>
             <el-option label="审核通过" value="1"></el-option>
             <el-option label="审核不通过" value="2"></el-option>
@@ -57,29 +57,29 @@
             </template>
           </el-table-column>
 
-          <el-table-column
-            width="120px"
-            prop="creditScore"
-            label="信用评分">
-            <template slot-scope="scope">
-            <span>
-              {{scope.row.creditScore}}
-            </span>
-            </template>
-          </el-table-column>
+<!--          <el-table-column-->
+<!--            width="120px"-->
+<!--            prop="creditScore"-->
+<!--            label="信用评分">-->
+<!--            <template slot-scope="scope">-->
+<!--            <span>-->
+<!--              {{scope.row.creditScore}}-->
+<!--            </span>-->
+<!--            </template>-->
+<!--          </el-table-column>-->
 
-          <el-table-column
-            prop="creditLimit"
-            label="贷款限额">
-          </el-table-column>
+<!--          <el-table-column-->
+<!--            prop="creditLimit"-->
+<!--            label="贷款限额">-->
+<!--          </el-table-column>-->
            <el-table-column
             prop="amountBorrowed"
             label="已借贷额">
           </el-table-column>
-           <el-table-column
-            prop="residualCredit"
-            label="剩余贷额">
-          </el-table-column>
+<!--           <el-table-column-->
+<!--            prop="residualCredit"-->
+<!--            label="剩余贷额">-->
+<!--          </el-table-column>-->
           <el-table-column
             prop="amountCreditApplied"
             label="该次申请贷额">

@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper">
     <el-dialog
-      title="信用金充值审核"
+      title="信用金还款审核"
       :visible.sync="dialogVisible"
       width="50%"
     >
@@ -19,10 +19,10 @@
            <el-form-item label="手机号" prop="phone">
             <el-input disabled v-model="info.phone" placeholder="手机号"></el-input>
           </el-form-item>
-           <el-form-item label="充值金额" prop="topupMoney">
+           <el-form-item label="还款金额" prop="topupMoney">
             <el-input disabled v-model="info.topupMoney" placeholder="充值金额"></el-input>
           </el-form-item>
-    
+
           <!-- <el-form-item label="充值时间" prop="topupTime">
             <el-input disabled v-model="info.topupTime" placeholder="充值时间"></el-input>
           </el-form-item> -->
@@ -32,7 +32,7 @@
               <el-option label="审核中" value="0"></el-option>
               <el-option label="审核通过" value="1"></el-option>
               <el-option label="审核不通过" value="2"></el-option>
-              <el-option label="未审核" value="3"></el-option>
+<!--              <el-option label="未审核" value="3"></el-option>-->
             </el-select>
           </el-form-item>
             <el-form-item label="审核原因" prop="auditReason">
@@ -84,7 +84,7 @@ export default {
       if (val) {
         this.form.id = this.info.id
         this.form.userId = this.info.userId
-  
+
       }
     }
   },

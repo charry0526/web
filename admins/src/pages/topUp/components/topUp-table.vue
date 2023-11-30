@@ -7,9 +7,12 @@
             <el-option v-for="i in agentList" :key="i.key" :label="i.nickName" :value="i.id"></el-option>
           </el-select>
         </el-form-item>
+        <el-form-item label="手机号">
+          <el-input v-model="form.phone" placeholder="手机号"></el-input>
+        </el-form-item>
         <el-form-item label="状态">
           <el-select v-model="form.topUpStatus" placeholder="状态">
-            <el-option label="未审核" value="3"></el-option>
+<!--            <el-option label="未审核" value="3"></el-option>-->
             <el-option label="审核中" value="0"></el-option>
             <el-option label="审核通过" value="1"></el-option>
             <el-option label="审核不通过" value="2"></el-option>
@@ -56,14 +59,14 @@
            <el-table-column
             width="360px"
             prop="topupMoney"
-            label="充值金额">
+            label="还款金额">
           </el-table-column>
 
 
            <el-table-column
             prop="deType"
             width="220px"
-            label="充值时间">
+            label="还款时间">
             <template slot-scope="scope">
             <span>
               {{scope.row.topupTime | timeFormat}}
@@ -101,7 +104,7 @@
             </span>
             </template>
           </el-table-column>
-          
+
           <el-table-column
             prop="deType"
             width="240"
@@ -181,6 +184,7 @@ export default {
       form: {
         userId: '',
         topUpStatus: '',
+        phone: '',
         pageNum: 1,
         pageSize: 10
         // phone: ''
@@ -222,7 +226,7 @@ export default {
         let year = nowdate.getFullYear()
         let month = nowdate.getMonth() + 1
         let day = nowdate.getDay()
-        export_json_to_excel(tHeader, data, '信用金充值记录列表' + year + month + day)
+        export_json_to_excel(tHeader, data, '信用金还款记录列表' + year + month + day)
       })
     },
     formatJson (filterVal, jsonData) {
@@ -324,9 +328,9 @@ export default {
       })
       return sums
     },
-    // 删除信用金充值记录
+    // 删除信用金还款记录
     toDelete (row) {
-      this.$confirm('确认删除该信用金充值记录？此操作不可恢复', '提示', {
+      this.$confirm('确认删除该信用金还款记录？此操作不可恢复', '提示', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
         type: 'warning'
