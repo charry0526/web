@@ -256,6 +256,8 @@
                 class="iconfont icon-xiugaiyinhangqia- "></i></el-button>
               <el-button type="text" title="修改资金" size="small" @click="toEditAmt(scope.row)"><i
                 class="iconfont icon-zijinguanli2"></i></el-button>
+              <el-button type="text" title="修改信用金" size="small" @click="toCreditEditAmt(scope.row)"><i
+                class="iconfont icon-zijinguanli2"></i></el-button>
               <el-button style="color:red;" type="text" title="审核" size="small" @click="toChange(scope.row)"><i
                 class="iconfont icon-shenhe_shangpinfenlei"></i></el-button>
               <el-button style="color:red;" type="text" title="删除" size="small" @click="deleteUser(scope.row.id)"><i
@@ -282,6 +284,7 @@
     <addDialog :agentList='agentList' :getDate='getList' ref="addSimulatedAccountDialog"></addDialog>
     <DetailDialog :info='detail' ref="detailDialog"></DetailDialog>
     <EditDialog :info='detail' :getDate='getList' ref="editDialog"></EditDialog>
+    <creditEditDialog :info='detail' :getDate='getList' ref="creditEditDialog"></creditEditDialog>
     <EditInfoDialog :info='detail' :agentList='agentList' :getDate='getList' ref="editInfoDialog"></EditInfoDialog>
     <ChangeAuthDialog :info='detail' :getDate='getList' ref="changeAuthDialog"></ChangeAuthDialog>
     <EditBankInfoDialog :info='detail' :getDate='getList' ref="editBankInfoDialog"></EditBankInfoDialog>
@@ -295,6 +298,7 @@ import * as api from '@/axios/api'
 import addDialog from './add-dialog'
 import DetailDialog from './detail-dialog'
 import EditDialog from './amt-dialog'
+import creditEditDialog from './creditAmt-dialog'
 import EditInfoDialog from './update-dialog'
 import ChangeAuthDialog from './auditing-dialog'
 import EditBankInfoDialog from './updatebank-dialog'
@@ -304,6 +308,7 @@ export default {
     addDialog,
     DetailDialog,
     EditDialog,
+    creditEditDialog,
     EditInfoDialog,
     ChangeAuthDialog,
     EditBankInfoDialog,
@@ -478,8 +483,15 @@ export default {
       return false
       this.$refs.editDialog.dialogVisible = true
     },
+    toCreditEditAmt (row) {
+      // 修改信用金
+      this.detail = row
+      this.$refs.CheckPassowrdDialogRef.showDialog()
+      return false
+      this.$refs.creditEditDialog.dialogVisible = true
+    },
     toEditAmtCallback(){
-       this.$refs.editDialog.dialogVisible = true
+      this.$refs.editDialog.dialogVisible = true
     },
     toEditInfo (row) {
       // 修改用户信息

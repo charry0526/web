@@ -171,6 +171,11 @@ export function updateAmt (options) {
   return post('/admin/user/updateAmt.do', options)
 }
 
+// 手动扣信用金
+export function updateCreditAmt (options) {
+  return post('/admin/user/updateCreditAmt.do', options)
+}
+
 // 代理手动扣款
 export function updateAgentAmt (options) {
   return post('/admin/agent/updateAgentAmt.do', options)
