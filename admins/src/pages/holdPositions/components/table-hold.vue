@@ -250,6 +250,7 @@
         </el-pagination>
       </div>
       <DetailDialog :info='detail' ref="detailDialog"></DetailDialog>
+      <AuditDialog :info='detail' :getDate='getList' ref="auditDialog"></AuditDialog>
 
     </div>
   </div>
@@ -259,10 +260,12 @@
 <script>
 import * as api from '@/axios/api'
 import DetailDialog from './detail-dialog'
+import AuditDialog from './audit-dialog'
 
 export default {
   components: {
-    DetailDialog
+    DetailDialog,
+    AuditDialog
   },
   props: {
     type: {
@@ -455,32 +458,36 @@ export default {
         })
       })
     },
-    positionLock (row) {
-      // 锁定
-      this.$prompt('请输入锁定原因?', '提示', {
-        confirmButtonText: '确定',
-        cancelButtonText: '取消',
-        type: 'warning'
-      }).then(async ({ value }) => {
-        let opts = {
-          positionId: row.id,
-          state: 1,
-          lockMsg: value
-        }
-        let data = await api.positionLock(opts)
-        if (data.status === 0) {
-          this.$message.success(data.msg)
-          this.getList()
-        } else {
-          this.$message.error(data.msg)
-        }
-      }).catch(() => {
-        this.$message({
-          type: 'info',
-          message: '取消锁仓！'
-        })
-      })
+    async positionLock (row) {
+      this.detail = row
+      this.$refs.auditDialog.dialogVisible = true
     },
+    // positionLock (row) {
+    //   // 锁定
+    //   this.$prompt('请输入锁定原因?', '提示', {
+    //     confirmButtonText: '确定',
+    //     cancelButtonText: '取消',
+    //     type: 'warning'
+    //   }).then(async ({ value }) => {
+    //     let opts = {
+    //       positionId: row.id,
+    //       state: 1,
+    //       lockMsg: value
+    //     }
+    //     let data = await api.positionLock(opts)
+    //     if (data.status === 0) {
+    //       this.$message.success(data.msg)
+    //       this.getList()
+    //     } else {
+    //       this.$message.error(data.msg)
+    //     }
+    //   }).catch(() => {
+    //     this.$message({
+    //       type: 'info',
+    //       message: '取消锁仓！'
+    //     })
+    //   })
+    // },
     positionUnLock (row) {
       // 解锁
       this.$confirm('确认要解锁该持仓单?', '提示', {
