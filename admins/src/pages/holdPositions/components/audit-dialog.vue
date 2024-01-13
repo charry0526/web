@@ -58,7 +58,6 @@ export default {
     info (val) {
       if (val) {
         this.form.id = this.info.id
-        this.form.lockMsg = this.info.lockMsg
       }
     }},
   computed: {},
