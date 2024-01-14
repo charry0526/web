@@ -496,8 +496,8 @@ export default {
         type: 'warning'
       }).then(async () => {
         let opts = {
-          positionId: row.id,
-          state: 0
+          id: row.id,
+          isLock: 0
         }
         let data = await api.positionLock(opts)
         if (data.status === 0) {
